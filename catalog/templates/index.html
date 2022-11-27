@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Registro de enchentes</h1>
+
+<p>Bem vindos ao projeto<em>Registro de enchentes</em>bla bla bla que foi baseado no projeto <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Tutorial_local_library_website"> da mozilla</a>
+
+
+<h2>==</h2>
+<p> </p>
+
+<h2>Dynamic content</h2>
+
+<p>Abaixo segue exemplo de alagamentos</p>
+<ul>
+<li><strong>Alagamentos:</strong> {{ num_books }}</li>
+<li><strong>bairros registrados:</strong> {{ num_instances }}</li>
+<li><strong>Usuários utilizando:</strong> {{ num_authors }}</li>
+</ul>
+
+
+<p>Você é o visitante nº {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+
+{% endblock %}
