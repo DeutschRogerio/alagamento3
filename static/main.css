@@ -93,7 +93,10 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
+.testelabel {
+background-color: inherit;
+margin: 0px 0px 30px 0;
+}
 /**
  * 1. Reset Chrome and Firefox behaviour which sets a `min-width: min-content;`
  *    on fieldsets.
@@ -446,7 +449,7 @@ input {
 
 .card-1 .card-heading {
   background: url('/static/images/bg-head-02.jpg');
-  padding-top: 210px;
+  /*padding-top: 210px;*/
 }
 
 .card-1 .card-body {
