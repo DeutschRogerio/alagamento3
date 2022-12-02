@@ -10,9 +10,27 @@ def get_db_connection():
     return conn
 
 
-@app.route("/teste1")
-def index():
-  return render_template('Cadastro_incidente.html')
+@app.route("/reportar")
+def reportar():
+    print("teste")
+    #conn = get_db_connection()
+    #area_interesse  = conn.execute("UPDATE TB_AREAS  set STATUS_AREA ='1' WHERE NOME_AREA =?",
+    #(area_interesse))
+    #conn.close()
+    #return render_template('incidentecomsql.html',area_interesse=area_interesse)
+
+
+
+@app.route("/cadastro_incidente", methods=('GET', 'POST'))
+def cadastro_incidente():
+    conn = get_db_connection()
+    area_interesse  = conn.execute('SELECT * FROM TB_AREAS').fetchall()
+    conn.close()
+    #reportar()
+    return render_template('incidentecomsql.html',area_interesse=area_interesse)
+    
+
+    
 
 @app.route("/teste2")
 def cadastro_incidentes():
@@ -22,23 +40,26 @@ def cadastro_incidentes():
 @app.route('/teste4')
 def testeinsert():
     conn = get_db_connection()
-    pessoas = conn.execute('SELECT * FROM TB_PESSOAS').fetchall()
+    nome_pessoa = conn.execute('SELECT * FROM TB_PESSOAS').fetchall()
+    area_interesse  = conn.execute('SELECT * FROM TB_AREAS').fetchall()
     conn.close()
-    return render_template('33.html', pessoas=pessoas)
+    return render_template('33.html', nome_pessoa=nome_pessoa,area_interesse=area_interesse) 
 
 @app.route('/create/', methods=('GET', 'POST'))
 def create():
     if request.method == 'POST':
-        nome_pessoa = request.form['nome_pessoa']
-        tel_pessoa = request.form['tel_pessoa']
+        Riquelme = request.form['Riquelme']
+        tel_pessoa = request.form['tel_pessoa' ]
 
-        if not nome_pessoa:
-            flash('Title is required!')
+        if not Riquelme:
+            flash('Nome é obrigatório!')
+            
         elif not tel_pessoa:
-            flash('Content is required!')
+            flash('telefone é obrigatório!')
         else:
             conn = get_db_connection()
-            conn.execute('INSERT INTO posts (title, content) VALUES (nome_pessoa, tel_pessoa)')
+            conn.execute('INSERT INTO TB_PESSOAS (NOME_PESSOA, TEL_PESSOA) VALUES (?, ?)',
+            (Riquelme,tel_pessoa))
             conn.commit()
             conn.close()
             return redirect(url_for('testeinsert'))

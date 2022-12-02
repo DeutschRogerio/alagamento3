@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} pessoas {% endblock %}</h1>
-    {% for pessoa in pessoas %}
-        <div class='post'>
-            <p>{{ pessoa['NOME_PESSOA'] }}</p>
-            <h2>{{ pessoa['TEL_PESSOA'] }}</h2>
+    <h1>{% block title %} SSS {% endblock %}</h1>
+   
+    <SELECT name="area" style="font-family:verdana">
+        {% for area in area_interesse %}
             
-        </div>
-    {% endfor %}
+                    <OPTION value={{area[1]}}>{{area[2]}}</OPTION>
+        
+                {% endfor %}
+            </SELECT>
+        </div>            
+
+
+
+            </p>
+    
 {% endblock %}

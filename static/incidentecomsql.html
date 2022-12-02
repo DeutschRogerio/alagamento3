@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Notificação de catastrofes</title>
+    <title>Au Register Forms by Colorlib</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -22,69 +22,73 @@
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
+    <!-- Main CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='menu.css') }}">
 
-
+    
 </head>
 
 <body>
+
     <header>
         <nav>
             <ul class="menu">
-
                 <li><a href="teste1">Cadastro de Incidentes</a></li>
                 <li><a href="teste2">Cadastro de Pessoas</a></li>
+               
             </ul>
             </p>
         </nav>
     </header>
-
-
+    
     <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
         <div class="wrapper wrapper--w680">
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">Cadastre-se para receber o status</h2>
+                    <h2 class="title">Registre Incidente</h2>
                     <form method="POST">
                         <div class="input-group">
-                            <input class="input--style-1" 
-                            type="text" placeholder="Nome" 
-                            name = "Riquelme">
-                        </input>
+                            <input class="input--style-1" type="text" placeholder="Digite seu nome" name="Nome">
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2"><br>
+                                <div class="input-group">
+                                    <div class = 'testelabel input--style-1'>
+                                        <p> Nos informe o dia e horario do ocorrido </p>
+                                    </div>
+                                    <input class="input--style-1 js-datepicker" type="datetime-local" placeholder="Nos informe a data e o horario do incidente" name="birthday">
+                                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                </div>
+                            </div>
+ 
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1 js-datepicker"
-                                      name="tel_pessoa"
-                                      type="number" placeholder="Telefone">
-                                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                    <p class="input--style-1">Nos informe o bairro do incidente</p>
                                 </div>
-                            
-                                        <div class="select-dropdown"></div>
-                                    </div>
-                            
-                            
+                            </div>
                         </div>
                         <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search" >
-                                <select name="class" class="input--style-1">
-                                    <option disabled="disabled" selected="selected">Informe o bairro que deseja saber o status</option>
-                                    <option>Lapa</option>
-                                    <option>João Dias</option>
-                                    <option>Osasco</option>
-                                    <option>Pirituba</option>
-                                    <option>Vila Formosa</option>
-                                    <option>Pinheiros</option>
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                
+                                    <SELECT name="area" class="input--style-1">
+                                        {% for area in area_interesse %}
+                                                                        
+                                                    <OPTION value={{area[1]}}>{{area[1]}}</OPTION>
+                                        
+                                                {% endfor %}
+                                            </SELECT>  
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
-                        
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit">Enviar</button>
+                            <button class="btn btn--radius btn--green" id="enviar" type="submit" name="enviar" onclick = "reportar()">Enviar</button>
                         </div>
                     </form>
                 </div>
@@ -103,7 +107,6 @@
     <script src="js/global.js"></script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-
+<!-- este de fato é cadastro de incidente  -->
 </html>
 <!-- end document-->
-<!-- cadastro incidente na verdade é cadastro pessoa -->
