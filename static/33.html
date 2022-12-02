@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} pessoas {% endblock %}</h1>
+    {% for pessoa in pessoas %}
+        <div class='post'>
+            <p>{{ pessoa['NOME_PESSOA'] }}</p>
+            <h2>{{ pessoa['TEL_PESSOA'] }}</h2>
+            
+        </div>
+    {% endfor %}
+{% endblock %}

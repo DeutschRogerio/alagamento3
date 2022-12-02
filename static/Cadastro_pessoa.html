@@ -49,12 +49,12 @@
                     <h2 class="title">Cadastre-se para receber o status</h2>
                     <form method="POST">
                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Nome" name="name">
+                            <input class="input--style-1" type="text" placeholder="Nome" name="name" Xvalue="{{ request.form['nome_pessoa'] }}"></input>
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1 js-datepicker" type="text" placeholder="Telefone" name="birthday">
+                                    <input class="input--style-1 js-datepicker" value="{{ request.form['tel_pessoa'] }}" type="text" placeholder="Telefone" name="birthday">
                                     <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                 </div>
                             
